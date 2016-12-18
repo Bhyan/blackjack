@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-import random
+from random import shuffle
 import pdb
 
 
@@ -22,3 +22,8 @@ def creat_deck(deck=1):
                 decks.append('{}{}'.format(suit, number))
 
     return decks
+
+DECK = creat_deck()
+# Shuffle of deck.
+shuffle(DECK)
+# pdb.set_trace()
