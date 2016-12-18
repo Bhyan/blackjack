@@ -6,16 +6,37 @@ import blackjack
 class TestBlackjack(unittest.TestCase):
     def setUp(self):
         self.deck = blackjack.creat_deck()
-        self.decks = blackjack.creat_deck(deck=2)
+        self.decks = blackjack.creat_deck(deck=8)
         suits = ["♣", "♦", "♥", "♠"]
         numbers = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Q",
                         "J", "K"]
 
     def test_creat_deck(self):
+        '''
+        Function test the creation of decks. Increases the difficulty for the
+        player. Maximum of 8 decks.
+        '''
+        # Creation of a common deck.
         deck_size = len(self.deck)
         self.assertEqual(deck_size, 52)
+        # Creation of a deck of eight decks.
         decks_size = len(self.decks)
-        self.assertEqual(decks_size, 104)
+        self.assertEqual(decks_size, 416)
+
+    def test_shuffle(self):
+        '''
+        Function test the shuffle of deck.
+        '''
+        # Shuffle of a common deck.
+        deck_before = self.deck[0:51]
+        blackjack.shuffle(self.deck)
+        deck_after = self.deck[0:51]
+        self.assertNotEqual(deck_before, deck_after)
+        # Shuffle of a deck of eight decks.
+        decks_before = self.decks[0:415]
+        blackjack.shuffle(self.decks)
+        decks_after = self.decks[0:415]
+        self.assertNotEqual(decks_before, decks_after)
 
     def tearDown(self):
         pass
