@@ -1,5 +1,4 @@
-Blackjack [![Build
-Status](https://travis-ci.org/Bhyan/blackjack.svg?branch=master)](https://travis-ci.org/Bhyan/blackjack)
+Blackjack [![BuildStatus](https://travis-ci.org/Bhyan/blackjack.svg?branch=master)](https://travis-ci.org/Bhyan/blackjack)
 =========
 
 
