@@ -23,7 +23,16 @@ def creat_deck(deck=1):
 
     return decks
 
+    def bet(coin, quantity):
+        global MONEY
+        if coin not in (1, 5, 10, 25, 50, 100, 500, 1000):
+            raise Exception('Invalid coin for bet.')
+        elif MONEY >= (coin * quantity):
+            MONEY -= (coin * quantity)
+            return MONEY
+
 DECK = creat_deck()
 # Shuffle of deck.
 shuffle(DECK)
 # pdb.set_trace()
+MONEY = 2000.00
