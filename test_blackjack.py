@@ -10,6 +10,7 @@ class TestBlackjack(unittest.TestCase):
         suits = ["♣", "♦", "♥", "♠"]
         numbers = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Q",
                         "J", "K"]
+        self.money = 2000.00
 
     def test_creat_deck(self):
         '''
@@ -37,6 +38,15 @@ class TestBlackjack(unittest.TestCase):
         blackjack.shuffle(self.decks)
         decks_after = self.decks[0:415]
         self.assertNotEqual(decks_before, decks_after)
+
+    def test_bet(self):
+        '''Function test of bet.'''
+        # For a bet valid.
+        coin = 100
+        quantity = 10
+        self.money -= (coin * quantity)
+        self.assertEqual(self.money, 1000.00)
+        # For a bet invalid.
 
     def tearDown(self):
         pass
