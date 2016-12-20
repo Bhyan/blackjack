@@ -47,6 +47,7 @@ class TestBlackjack(unittest.TestCase):
         self.money -= (coin * quantity)
         self.assertEqual(self.money, 1000.00)
         # For a bet invalid.
+        self.assertRaises(Exception, blackjack.bet(1, 10))
 
     def test_play(self):
         '''Function test of play.'''
@@ -54,10 +55,12 @@ class TestBlackjack(unittest.TestCase):
         blackjack.shuffle(self.deck)
         self.deck.pop(0)
         self.assertEqual(len(self.deck), 51)
-        # For a deck of eight decks
+        # For a deck of eight decks.
         blackjack.shuffle(self.decks)
         self.decks.pop(0)
         self.assertEqual(len(self.decks), 415)
+        # For exception.
+        self.assertRaises(Exception, blackjack.play())
 
     def tearDown(self):
         pass
