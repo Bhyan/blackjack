@@ -53,10 +53,9 @@ def play():
         return HAND, HOUSE
 
 
-if __name__ == '__main__':
-    DECK = creat_deck()
-    # Shuffle of deck.
-    shuffle(DECK)
-    MONEY = 2000.00
-    HAND = []
-    HOUSE = []
+DECK = creat_deck()
+# Shuffle of deck.
+shuffle(DECK)
+MONEY = 2000.00
+HAND = []
+HOUSE = []
