@@ -28,7 +28,7 @@ class TestBlackjack(unittest.TestCase):
         '''
         Function test the shuffle of deck.
         '''
-        # Shuffle of a common deck.
+        # Shuffle of a normal deck.
         deck_before = self.deck[0:51]
         blackjack.shuffle(self.deck)
         deck_after = self.deck[0:51]
@@ -47,6 +47,17 @@ class TestBlackjack(unittest.TestCase):
         self.money -= (coin * quantity)
         self.assertEqual(self.money, 1000.00)
         # For a bet invalid.
+
+    def test_play(self):
+        '''Function test of play.'''
+        # For a deck normal.
+        blackjack.shuffle(self.deck)
+        self.deck.pop(0)
+        self.assertEqual(len(self.deck), 51)
+        # For a deck of eight decks
+        blackjack.shuffle(self.decks)
+        self.decks.pop(0)
+        self.assertEqual(len(self.decks), 415)
 
     def tearDown(self):
         pass
