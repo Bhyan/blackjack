@@ -34,10 +34,26 @@ def creat_deck(deck=1):
             raise Exception('Value of bet larger what your money.')
         else:
             MONEY -= (coin * quantity)
-            return MONEY
+        return MONEY += 0.01
+
+    def play():
+        '''
+        To start the function it is necessary to have a bet, that is why the
+        variable MONEY receives 0.01 in the betting function, ensuring that a
+        bet was made.
+        '''
+        if MONEY == 2000.00:
+            raise Exception('Bet is necessary for player.')
+        else:
+            while len(HAND) < 2:
+                HAND.append(DECK.pop(0))
+                HOUSE.append(DECK.pop(0))
+            return HAND, HOUSE
 
 DECK = creat_deck()
 # Shuffle of deck.
 shuffle(DECK)
 # pdb.set_trace()
 MONEY = 2000.00
+HAND = []
+HOUSE = []
