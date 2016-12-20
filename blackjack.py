@@ -34,7 +34,8 @@ def creat_deck(deck=1):
             raise Exception('Value of bet larger what your money.')
         else:
             MONEY -= (coin * quantity)
-        return MONEY += 0.01
+        MONEY += 0.01
+        return MONEY
 
     def play():
         '''
