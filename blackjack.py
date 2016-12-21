@@ -52,7 +52,12 @@ def play():
             HOUSE.append(DECK.pop(0))
         return HAND, HOUSE
 
+
 def show_hand():
+    '''
+    This function only shows the cards to the player. His and those in the
+    house.
+    '''
     msg = ('Your hand has {} card: {}')
     cards = ', '.join(HAND)
     print(msg.format(len(HAND), cards))

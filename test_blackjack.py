@@ -66,10 +66,9 @@ class TestBlackjack(unittest.TestCase):
         '''
         Function test of show hand, where is create a new fake hand for test.
         '''
-        fake_hand = ['A♣','10♣']
+        fake_hand = ['A♣', '10♣']
         cards = ', '.join(fake_hand)
         self.assertTrue(cards, 'A♣, 10♣')
-
 
     def tearDown(self):
         pass
