@@ -52,6 +52,11 @@ def play():
             HOUSE.append(DECK.pop(0))
         return HAND, HOUSE
 
+def show_hand():
+    msg = ('Your hand has {} card: {}')
+    cards = ', '.join(HAND)
+    print(msg.format(len(HAND), cards))
+    print('House: {}, X'.format(HOUSE[0]))
 
 DECK = creat_deck()
 # Shuffle of deck.
