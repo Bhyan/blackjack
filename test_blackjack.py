@@ -62,6 +62,15 @@ class TestBlackjack(unittest.TestCase):
         # For exception.
         self.assertRaises(Exception, blackjack.play())
 
+    def test_show_hand(self):
+        '''
+        Function test of show hand, where is create a new fake hand for test.
+        '''
+        fake_hand = ['A♣','10♣']
+        cards = ', '.join(fake_hand)
+        self.assertTrue(cards, 'A♣, 10♣')
+
+
     def tearDown(self):
         pass
 
