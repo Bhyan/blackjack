@@ -10,6 +10,7 @@ class TestBlackjack(unittest.TestCase):
         self.money = 2000.00
         self.obj.bet(100, 10)
         self.obj.play()
+        self.fake_hand = ['A♠', '10♣']
 
     def test_creat_deck(self):
         '''
@@ -45,7 +46,7 @@ class TestBlackjack(unittest.TestCase):
         obj2.play()
         deck_size = len(obj2.decks)
         self.assertEqual(deck_size, 412)
-        # Test exception
+        # Test exception.
         self.assertRaises(Exception, blackjack.Blackjack.play)
 
     def test_show_hand(self):
@@ -60,19 +61,34 @@ class TestBlackjack(unittest.TestCase):
         '''
         Function test of show points.
         '''
-        fake_hand = ['A♠', '10♣']
-        self.obj.show_points(fake_hand)
+        self.obj.show_points(self.fake_hand)
         self.assertEqual(self.obj.points, 11)
         fake_hand = ['A♠', '9♣']
         self.obj.show_points(fake_hand)
         self.assertEqual(self.obj.points, 10)
-        # Fake blackjack
+        # Fake blackjack.
         fake_blackjack = ['A♠', 'J♣']
         self.obj.show_points(fake_blackjack)
         self.assertEqual(self.obj.points, 21)
         fake_blackjack2 = ['J♣', 'A♠']
         self.obj.show_points(fake_blackjack2)
         self.assertEqual(self.obj.points, 21)
+        # Test with a hand containing more of two cards.
+        fake_hand3 = ['J♣', 'A♠', '8♣']
+        self.obj.show_points(fake_hand3)
+        self.assertEqual(self.obj.points, 29)
+
+    def test_hit(self):
+        '''
+        Function test of hit.
+        '''
+        self.obj.show_points(self.fake_hand)
+        self.obj.hit()
+        self.assertEqual(len(self.obj.decks), 47)
+        # Exception.
+        fake_hand = ['J♣', 'A♠', '8♣']
+        self.obj.show_points(self.fake_hand)
+        self.assertRaises(Exception, blackjack.Blackjack.hit)
 
     def tearDown(self):
         pass
