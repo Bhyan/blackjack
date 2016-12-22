@@ -1,5 +1,4 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/63cea6dddf0249f299551f835935961a)](https://www.codacy.com/app/bhyanbrito-github/blackjack?utm_source=github.com&utm_medium=referral&utm_content=Bhyan/blackjack&utm_campaign=badger)
-Blackjack [![BuildStatus](https://travis-ci.org/Bhyan/blackjack.svg?branch=master)](https://travis-ci.org/Bhyan/blackjack)
+Blackjack [![BuildStatus](https://travis-ci.org/Bhyan/blackjack.svg?branch=master)](https://travis-ci.org/Bhyan/blackjack) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/63cea6dddf0249f299551f835935961a)](https://www.codacy.com/app/bhyanbrito-github/blackjack?utm_source=github.com&utm_medium=referral&utm_content=Bhyan/blackjack&utm_campaign=badger)
 =========
 
 
