@@ -72,7 +72,7 @@ class Blackjack(object):
         self.points = 0
         for card in count:
             value = card[:-1]
-            if value in ('A' and 'J'):
+            if value in ('A' and 'J', 'Q', 'K', 10):
                 self.points += 21
                 self.points -= 1
             elif value == 'A':
@@ -82,3 +82,13 @@ class Blackjack(object):
             else:
                 self.points += int(value)
         return self.points
+
+    def hit(self):
+        '''
+        Purchase function of cards. Allows purchase while value of sum of cards
+        is lower than 21.
+        '''
+        if self.points < 21:
+            self.hand.append(self.decks.pop(0))
+        else:
+            raise Exception(None)
