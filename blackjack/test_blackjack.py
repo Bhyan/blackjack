@@ -8,7 +8,8 @@ class TestBlackjack(unittest.TestCase):
         self.obj = blackjack.Blackjack()
         self.obj.creat_deck()
         self.money = 2000.00
-        self.fake_hand = ['2♣', '10♣']
+        self.obj.bet(100, 10)
+        self.obj.play()
 
     def test_creat_deck(self):
         '''
@@ -27,7 +28,6 @@ class TestBlackjack(unittest.TestCase):
     def test_bet(self):
         '''Function test of bet.'''
         # For a bet valid.
-        self.obj.bet(100, 10)
         self.assertEqual(self.obj.money, 1000.01)
         # For a bet invalid.
         self.assertRaises(Exception, blackjack.Blackjack.bet, (3, 10))
@@ -36,23 +36,43 @@ class TestBlackjack(unittest.TestCase):
     def test_play(self):
         '''Function test of play.'''
         # For a deck normal.
-        self.obj.bet(10, 10)
-        self.obj.play()
         deck_size = len(self.obj.decks)
         self.assertEqual(deck_size, 48)
         # For a deck of eight decks.
-        self.obj.play()
-        deck_size = len(self.obj.decks)
-        self.assertEqual(deck_size, 44)
+        obj2 = blackjack.Blackjack()
+        obj2.creat_deck(8)
+        obj2.bet(100, 10)
+        obj2.play()
+        deck_size = len(obj2.decks)
+        self.assertEqual(deck_size, 412)
         # Test exception
         self.assertRaises(Exception, blackjack.Blackjack.play)
 
     def test_show_hand(self):
         '''
-        Function test of show hand, where is create a new fake hand for test.
+        Function test of show hand.
         '''
-        cards = ', '.join(self.fake_hand)
-        self.assertTrue(cards, '2♣, 10♣')
+        self.obj.show_hand()
+        size_hand = len(self.obj.hand)
+        self.assertTrue(size_hand, 2)
+
+    def test_show_points(self):
+        '''
+        Function test of show points.
+        '''
+        fake_hand = ['A♠', '10♣']
+        self.obj.show_points(fake_hand)
+        self.assertEqual(self.obj.points, 11)
+        fake_hand = ['A♠', '9♣']
+        self.obj.show_points(fake_hand)
+        self.assertEqual(self.obj.points, 10)
+        # Fake blackjack
+        fake_blackjack = ['A♠', 'J♣']
+        self.obj.show_points(fake_blackjack)
+        self.assertEqual(self.obj.points, 21)
+        fake_blackjack2 = ['J♣', 'A♠']
+        self.obj.show_points(fake_blackjack2)
+        self.assertEqual(self.obj.points, 21)
 
     def tearDown(self):
         pass
