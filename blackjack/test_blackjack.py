@@ -87,7 +87,7 @@ class TestBlackjack(unittest.TestCase):
         self.assertEqual(len(self.obj.decks), 47)
         # Exception.
         fake_hand = ['J♣', 'A♠', '8♣']
-        self.obj.show_points(self.fake_hand)
+        self.obj.show_points(fake_hand)
         self.assertRaises(Exception, blackjack.Blackjack.hit)
 
     def tearDown(self):
