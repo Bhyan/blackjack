@@ -21,7 +21,7 @@ class Blackjack(object):
             count += 1
             for suit in suits:
                 for number in numbers:
-                    self.decks.append('{}{}'.format(suit, number))
+                    self.decks.append('{}{}'.format(number, suit))
         return shuffle(self.decks)
 
     def bet(self, coin, quantity):
@@ -41,8 +41,8 @@ class Blackjack(object):
     def play(self):
         '''
         To start the function it is necessary to have a bet, that is why the
-        variable self.money receives 0.01 in the betting function, ensuring that a
-        bet was made.
+        variable self.money receives 0.01 in the betting function, ensuring
+        that a bet was made. Remember that function remove 4 cards of decks.
         '''
         self.hand = []
         self.house = []
@@ -59,7 +59,26 @@ class Blackjack(object):
         This function only shows the cards to the player. His and those in the
         house.
         '''
-        msg = ('Your hand has {} card: {}')
+        msg = ('Your card: {}')
         cards = ', '.join(self.hand)
-        print(msg.format(len(self.hand), cards))
-        print('House: {}, X'.format(self.house[0]))
+        return(msg.format(cards))
+        return('House: {}, X'.format(self.house[0]))
+
+    def show_points(self, count):
+        '''
+        Function counting the value of the cards. According to the rule if you
+        have an Ace and a J, complete the value 21 or Blackjack.
+        '''
+        self.points = 0
+        for card in count:
+            value = card[:-1]
+            if value in ('A' and 'J'):
+                self.points += 21
+                self.points -= 1
+            elif value == 'A':
+                self.points += 1
+            elif value in ('J', 'Q', 'K'):
+                self.points += 10
+            else:
+                self.points += int(value)
+        return self.points
