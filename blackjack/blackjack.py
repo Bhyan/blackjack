@@ -61,8 +61,7 @@ class Blackjack(object):
         '''
         msg = ('Your card: {}')
         cards = ', '.join(self.hand)
-        return(msg.format(cards))
-        return('House: {}, X'.format(self.house[0]))
+        return(msg.format(cards), 'House: {}, X'.format(self.house[0]))
 
     def show_points(self, count):
         '''
