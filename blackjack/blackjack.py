@@ -24,7 +24,7 @@ class Blackjack(object):
                     self.decks.append('{}{}'.format(number, suit))
         return shuffle(self.decks)
 
-    def bet(self, coin, quantity):
+    def bet(self, coin, quantity=1):
         '''
         Betting values are defined as casino chips. That is why exist the
         exception error.
@@ -54,22 +54,13 @@ class Blackjack(object):
                 self.house.append(self.decks.pop(0))
             return self.hand, self.house
 
-    def show_hand(self):
-        '''
-        This function only shows the cards to the player. His and those in the
-        house.
-        '''
-        msg = ('Your card: {}')
-        cards = ', '.join(self.hand)
-        return(msg.format(cards), 'House: {}, X'.format(self.house[0]))
-
-    def show_points(self, count):
+    def show_points(self, cards):
         '''
         Function counting the value of the cards. According to the rule if you
         have an Ace and a J, complete the value 21 or Blackjack.
         '''
         self.points = 0
-        for card in count:
+        for card in cards:
             value = card[:-1]
             if value in ('A' and 'J', 'Q', 'K', 10):
                 self.points += 21
@@ -91,3 +82,4 @@ class Blackjack(object):
             self.hand.append(self.decks.pop(0))
         else:
             raise Exception(None)
+        return self.hand
