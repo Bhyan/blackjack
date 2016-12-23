@@ -62,8 +62,7 @@ while True:
                                 Hit: Y/N
         |                                                           |
         +-----------------------------------------------------------+
-        '''.format(player.house[0], player.hand, point_player, 
-            player.money - 0.01))
+        '''.format(player.house[0], player.hand, point_player, player.money))
     hit = input('Hit: ')
     hit.casefold()
 
