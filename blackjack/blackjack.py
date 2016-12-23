@@ -62,10 +62,7 @@ class Blackjack(object):
         self.points = 0
         for card in cards:
             value = card[:-1]
-            if value in ('A' and 'J', 'Q', 'K', 10):
-                self.points += 21
-                self.points -= 1
-            elif value == 'A':
+            if value == 'A':
                 self.points += 1
             elif value in ('J', 'Q', 'K'):
                 self.points += 10

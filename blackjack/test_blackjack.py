@@ -55,22 +55,13 @@ class TestBlackjack(unittest.TestCase):
         '''
         Function test of show points.
         '''
-        self.obj.show_points(self.fake_hand)
-        self.assertEqual(self.obj.points, 11)
         fake_hand = ['A♠', '9♣']
         self.obj.show_points(fake_hand)
         self.assertEqual(self.obj.points, 10)
-        # Fake blackjack.
-        fake_blackjack = ['A♠', 'J♣']
-        self.obj.show_points(fake_blackjack)
-        self.assertEqual(self.obj.points, 21)
-        fake_blackjack2 = ['J♣', 'A♠']
-        self.obj.show_points(fake_blackjack2)
-        self.assertEqual(self.obj.points, 21)
         # Test with a hand containing more of two cards.
         fake_hand3 = ['J♣', 'A♠', '8♣']
         self.obj.show_points(fake_hand3)
-        self.assertEqual(self.obj.points, 29)
+        self.assertEqual(self.obj.points, 19)
 
     def test_hit(self):
         '''
