@@ -17,6 +17,8 @@ class TestBlackjack(unittest.TestCase):
         Function test the creation of decks. Increases the difficulty for the
         player. Maximum of 8 decks.
         '''
+        # Test exception
+        self.assertRaises(Exception, blackjack.Blackjack.creat_deck, 'a')
         # Creation of a common deck.
         self.obj.creat_deck()
         deck_size = len(self.obj.decks)
@@ -48,14 +50,6 @@ class TestBlackjack(unittest.TestCase):
         self.assertEqual(deck_size, 412)
         # Test exception.
         self.assertRaises(Exception, blackjack.Blackjack.play)
-
-    def test_show_hand(self):
-        '''
-        Function test of show hand.
-        '''
-        self.obj.show_hand()
-        size_hand = len(self.obj.hand)
-        self.assertTrue(size_hand, 2)
 
     def test_show_points(self):
         '''
