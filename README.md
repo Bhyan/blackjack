@@ -4,12 +4,19 @@ Blackjack [![BuildStatus](https://travis-ci.org/Bhyan/blackjack.svg?branch=maste
 Blackjack is a game developed in Python from the terminal. The game is more to study, but It's to be playable.
 The rules of the game were consulted in [Blackjack.org](http://www.blackjack.org/blackjack-rules/).
 
+**Compatible versions:**
+  > Upper 3.0
+
 Test
 ----
 
 To run the test:
 ```
 $ python -m unittest test_blackjack.py
+```
+To run the game:
+```
+$ python game.py
 ```
 
 [License](https://github.com/Bhyan/blackjack/blob/master/LICENSE)
