@@ -4,6 +4,7 @@ import blackjack.blackjack
 
 os.system('cls' if os.name == 'nt' else 'clear')
 player = blackjack.blackjack.Blackjack()
+house = blackjack.blackjack.Blackjack()
 
 decks = int(input(
     '''
@@ -14,7 +15,7 @@ decks = int(input(
         - Choose the number of decks (between one and eight).
     |                                                           |
     +-----------------------------------------------------------+
-    Deck: '''))
+Deck: '''))
 
 player.creat_deck(decks)
 os.system('cls' if os.name == 'nt' else 'clear')
@@ -42,7 +43,6 @@ player.bet(coin, quantity)
 os.system('cls' if os.name == 'nt' else 'clear')
 
 player.play()
-point_house = player.show_points(player.house)
 
 while True:
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -63,27 +63,16 @@ while True:
         |                                                           |
         +-----------------------------------------------------------+
         '''.format(player.house[0], player.hand, point_player, player.money))
-    hit = input('Hit: ')
-    hit.casefold()
 
     if point_player == 21:
         print('You won!')
     else:
-        if hit == 'y':
-            player.hit()
-        elif hit == 'n':
-            if point_house < point_player <= 21:
-                print('House: {}'.format(player.house))
-                print('Points of house: {}'.format(point_house))
-                print('You won!')
-                break
-            elif point_player < point_house <= 21:
-                print('House: {}'.format(player.house))
-                print('Points of house: {}'.format(point_house))
-                print('You lost!')
-                break
-            else:
-                print('House: {}'.format(player.house))
-                print('Points of house: {}'.format(point_house))
-                print('Tie.')
-                break
+        pass
+
+    hit = input('Hit: ')
+    hit.casefold()
+
+    if hit == 'y':
+        player.hit()
+    elif hit == 'n':
+        break
