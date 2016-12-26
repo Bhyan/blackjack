@@ -35,7 +35,6 @@ class Blackjack(object):
             raise Exception('Value of bet larger what your money.')
         else:
             self.money -= (coin * quantity)
-            self.money += 0.01
             return self.money
 
     def play(self):
@@ -46,13 +45,10 @@ class Blackjack(object):
         '''
         self.hand = []
         self.house = []
-        if self.money == 2000.00:
-            raise Exception('Bet is necessary for player.')
-        else:
-            while len(self.hand) < 2:
-                self.hand.append(self.decks.pop(0))
-                self.house.append(self.decks.pop(0))
-            return self.hand, self.house
+        while len(self.hand) < 2:
+            self.hand.append(self.decks.pop(0))
+            self.house.append(self.decks.pop(0))
+        return self.hand, self.house
 
     def show_points(self, cards):
         '''
@@ -80,3 +76,14 @@ class Blackjack(object):
         else:
             raise Exception(None)
         return self.hand
+
+    def hit_house(self):
+        '''
+        Purchase function of cards. Allows purchase while value of sum of cards
+        is lower than 21.
+        '''
+        if self.points < 21:
+            self.house.append(self.decks.pop(0))
+        else:
+            raise Exception(None)
+        return self.house
