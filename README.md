@@ -15,7 +15,7 @@ Test
 
 To run the test:
 ```
-$ python -m unittest test_blackjack.py
+$ python -m unittest -v test_blackjack.py
 ```
 To run the game:
 ```
