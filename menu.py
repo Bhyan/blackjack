@@ -66,8 +66,10 @@ while True:
 
     if point_player == 21:
         print('You won!')
-    else:
-        pass
+        break
+    elif point_player > 21:
+        print('You lost!')
+        break
 
     hit = input('Hit: ')
     hit.casefold()
