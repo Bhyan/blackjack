@@ -17,6 +17,8 @@ class Blackjack(object):
                         "J", "K"]
         self.decks = []
         count = 0
+        if deck > 8:
+            raise Exception('Maximun of decks is eight.')
         while count < deck:
             count += 1
             for suit in suits:

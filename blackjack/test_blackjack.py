@@ -18,7 +18,7 @@ class TestBlackjack(unittest.TestCase):
         player. Maximum of 8 decks.
         '''
         # Test exception
-        self.assertRaises(Exception, blackjack.Blackjack.creat_deck, 'a')
+        self.assertRaises(Exception, blackjack.Blackjack.creat_deck, 10)
         # Creation of a common deck.
         self.obj.creat_deck()
         deck_size = len(self.obj.decks)
