@@ -19,6 +19,8 @@ To run the test:
 ```
 $ python -m unittest -v test_blackjack.py
 ```
+![Test](https://raw.githubusercontent.com/Bhyan/blackjack/master/screenshot/screenshot_test.png)
+![](https://raw.githubusercontent.com/Bhyan/blackjack/master/screenshot/screenshot_01.png =250x250)
 To run the game:
 ```
 $ python menu.py
