@@ -82,8 +82,5 @@ class Blackjack(object):
         Purchase function of cards. Allows purchase while value of sum of cards
         is lower than 21.
         '''
-        if self.points < 21:
-            self.house.append(self.decks.pop(0))
-        else:
-            raise Exception(None)
+        self.house.append(self.decks.pop(0))
         return self.house

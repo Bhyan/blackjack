@@ -1,80 +1,47 @@
-import os
+# -*- coding:utf-8 -*-
 import blackjack.blackjack
+import os
 
 
 os.system('cls' if os.name == 'nt' else 'clear')
 player = blackjack.blackjack.Blackjack()
-house = blackjack.blackjack.Blackjack()
-
-decks = int(input(
-    '''
-    +-----------------------------------------------------------+
-    |                                                           |
-                        ♦ ♣ BLACKJACK ♠ ♥
-
-        - Choose the number of decks (between one and eight).
-    |                                                           |
-    +-----------------------------------------------------------+
-Deck: '''))
-
+print('+', '-' * 60, '♦ ♣ BLACKJACK ♠ ♥', '-' * 60, '+\n')
+print('''The number of decks goes from one to eight, the larger the amount the
+        greater the difficulty''')
+decks = int(input('Insert the quantify of decks: '))
 player.creat_deck(decks)
-os.system('cls' if os.name == 'nt' else 'clear')
-
-coin = int(input(
-    '''
-    +-----------------------------------------------------------+
-    |                                                           |
-                        ♦ ♣ BLACKJACK ♠ ♥
-
-                - You have 2000.00 coins for bet.
-                   Coins: 1, 5, 10, 25, 50, 100.
-
-            - You can bet more than one unit, only inform
-                       the amount of chips.
-
-                      - Exemple: Coin: 100
-                             Quantity: 3
-    |                                                           |
-    +-----------------------------------------------------------+
-    Coin: '''))
-quantity = int(input('Quantity: '))
-
-player.bet(coin, quantity)
-os.system('cls' if os.name == 'nt' else 'clear')
-
-player.play()
-
-while True:
-    os.system('cls' if os.name == 'nt' else 'clear')
-    point_player = player.show_points(player.hand)
-
-    print(
-        '''
-        +-----------------------------------------------------------+
-        |                                                           |
-                            ♦ ♣ BLACKJACK ♠ ♥
-
-            House: {} X         Your cards: {}
-
-            Your points: {}               Your money: {}
-
-
-                                Hit: Y/N
-        |                                                           |
-        +-----------------------------------------------------------+
-        '''.format(player.house[0], player.hand, point_player, player.money))
-
-    if point_player == 21:
-        print('You won!')
-        break
-    elif point_player > 21:
-        print('You lost!')
-        break
-
-    hit = input('Hit: ')
-    hit.casefold()
-
-    if hit == 'y':
-        player.hit()
-    elif hit == 'n':
-        break
+# print(len(player.decks))
+while player.money > 0.0:
+    print('+', '-' * 60, '♦ ♣ BLACKJACK ♠ ♥', '-' * 60, '+\n')
+    print('Your money is: {} coins'.format(player.money))
+    print('''For bet possible coin = 1, 5, 10, 25, 50 and 100. Is possible
+        multiply the coins, not exceed your coins.''')
+    coin = int(input('Coin: '))
+    quantity = int(input('Quantity: '))
+    player.bet(coin, quantity)
+    player.play()
+    while True:
+        player.show_points(player.hand)
+        print('+', '-' * 60, '♦ ♣ BLACKJACK ♠ ♥', '-' * 60, '+\n')
+        print('Your cards: {}'.format(player.hand))
+        print('Your points: {}'.format(player.points))
+        print('Cards of house: [{}, X]'.format(player.house[0]))
+        if player.points < 21:
+            hit = input('More one card? [Y/N]')
+            hit.casefold()
+            if hit == 'y':
+                player.hit()
+            elif hit == 'n':
+                print('+', '-' * 60, '♦ ♣ BLACKJACK ♠ ♥', '-' * 60, '+\n')
+                print('Your cards: {}'.format(player.hand))
+                print('Your points: {}'.format(player.points))
+                print('Cards of house: {}'.format(player.house))
+                player.show_points(player.house)
+                print('Points of house: {}'.format(player.points))
+                break
+        elif player.points == 21:
+            print('You won.')
+            break
+        else:
+            print('You lost.')
+            break
