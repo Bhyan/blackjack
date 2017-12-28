@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from random import shuffle
+import os
 
 
 class Blackjack(object):
@@ -86,3 +87,9 @@ class Blackjack(object):
         '''
         self.house.append(self.decks.pop(0))
         return self.house
+
+
+def header():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print('+', '-' * 60, '\033[31m♦\033[m ♣ BLACKJACK ♠ \033[31m♥\033[m',
+            '-' * 60, '+\n')
